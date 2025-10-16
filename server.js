@@ -5,6 +5,11 @@ import dayjs from 'dayjs';
 import { query } from './db.js';
 
 const app = express();
+
+// ✅ CORS untuk semua origin + jawab preflight
+app.use(cors());                 // set header CORS
+app.options('*', cors());        // <-- penting: handle OPTIONS preflight
+
 app.use(helmet());
 app.use(cors({ origin: '*' }));
 app.use(express.json());
